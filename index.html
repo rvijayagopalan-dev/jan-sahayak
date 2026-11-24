@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JanSahayak | Universal Citizen Intelligence & Service Platform</title>
+<style>
+:root{--navy:#10243a;--navy2:#173653;--blue:#2463eb;--teal:#0f9d8a;--gold:#e8a23a;--ink:#17283c;--muted:#68788c;--line:#e4eaf1;--bg:#f4f7fb;--white:#fff;--soft:#edf4ff;--shadow:0 10px 30px rgba(16,36,58,.08);--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:258px 1fr}
+.sidebar{background:linear-gradient(180deg,#10243a,#173653);color:#fff;padding:22px 16px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;gap:11px;align-items:center;padding:4px 8px 22px;border-bottom:1px solid #ffffff20}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#f7c66b,#f08c43);display:grid;place-items:center;color:#13283c;font-size:23px;font-weight:900}.brand strong{display:block;font-size:18px;letter-spacing:.2px}.brand small{color:#c2d2e1;font-size:10px;letter-spacing:1.2px;text-transform:uppercase}
+.nav-label{font-size:10px;color:#91a8bd;letter-spacing:1.3px;text-transform:uppercase;padding:20px 10px 7px}.nav button{width:100%;border:0;background:transparent;color:#d6e2ec;text-align:left;padding:10px 12px;border-radius:10px;display:flex;align-items:center;gap:11px;margin:2px 0;font-size:13px}.nav button:hover,.nav button.active{background:#ffffff18;color:white}.nav .ico{width:21px;text-align:center;font-size:16px}.sidebar-foot{margin:24px 8px 4px;padding:13px;border:1px solid #ffffff24;border-radius:13px;color:#c8d6e3;font-size:11px}
+.main{min-width:0}.topbar{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:5}.crumb{color:var(--muted);font-size:12px}.top-right{display:flex;align-items:center;gap:12px}.search{position:relative}.search input{width:min(310px,32vw);padding:10px 13px 10px 36px;border:1px solid var(--line);border-radius:11px;background:#f9fbfd;outline:none}.search span{position:absolute;left:12px;top:8px;color:#7b8ba0}.avatar{width:34px;height:34px;border-radius:50%;background:#dce9ff;color:#2455a8;display:grid;place-items:center;font-weight:700}
+.content{padding:26px 30px 50px;max-width:1500px;margin:auto}.page{display:none}.page.active{display:block}.eyebrow{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--blue);font-weight:800}.heading{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin:3px 0 20px}.heading h1{font-size:27px;line-height:1.2;margin:5px 0 7px;letter-spacing:-.6px}.heading p{margin:0;color:var(--muted);max-width:760px}.actions{display:flex;gap:9px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:10px;color:var(--ink);font-weight:650;font-size:12px}.btn.primary{background:var(--blue);border-color:var(--blue);color:white}.btn.dark{background:var(--navy);color:#fff;border-color:var(--navy)}.btn:hover{filter:brightness(.97);transform:translateY(-1px)}
+.hero{background:linear-gradient(115deg,#10243a,#1e4b70 65%,#147d82);color:#fff;border-radius:22px;padding:27px 29px;position:relative;overflow:hidden;box-shadow:var(--shadow)}.hero:after{content:"जन";position:absolute;right:5%;top:-48px;font-size:180px;font-weight:900;color:#ffffff0b}.hero h1{font-size:29px;margin:5px 0 8px;max-width:720px}.hero p{color:#d2e1ed;max-width:730px;margin:0 0 18px}.hero .eyebrow{color:#f3c875}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.hero .btn{border:0}.hero .btn.primary{background:#f3bb58;color:#142a3f}.hero .btn.ghost{background:#ffffff18;color:white;border:1px solid #ffffff35}
+.grid{display:grid;gap:15px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin:18px 0}.stat,.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 3px 12px rgba(20,40,65,.025)}.stat{padding:17px 18px}.stat .label{font-size:11px;color:var(--muted)}.stat strong{display:block;font-size:25px;margin:4px 0}.stat small{color:var(--teal);font-size:11px}.two{grid-template-columns:1.25fr .75fr}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.card{padding:18px}.card h3{font-size:15px;margin:0 0 5px}.card .sub{color:var(--muted);font-size:12px;margin:0 0 14px}.section-title{display:flex;justify-content:space-between;align-items:center;margin:23px 0 12px}.section-title h2{font-size:17px;margin:0}.section-title span{font-size:11px;color:var(--muted)}
+.product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.product{padding:15px;border:1px solid var(--line);border-radius:15px;background:#fff;text-align:left;transition:.15s;min-height:142px;display:flex;flex-direction:column;gap:7px}.product:hover{border-color:#9db9ee;box-shadow:var(--shadow);transform:translateY(-2px)}.product .picon{width:35px;height:35px;border-radius:11px;display:grid;place-items:center;font-size:19px;background:var(--soft)}.product b{font-size:13px}.product small{font-size:11px;color:var(--muted);line-height:1.4}.tag{display:inline-flex;align-items:center;border-radius:30px;padding:4px 8px;font-size:10px;font-weight:700;background:#edf4ff;color:#315d9b}.tag.green{background:#e7f7f1;color:#13765f}.tag.amber{background:#fff5e5;color:#98621a}.tag.gray{background:#f0f2f5;color:#5e6b79}
+.list{display:grid;gap:0}.list-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center}.list-row:last-child{border:0}.list-row b{font-size:12px}.list-row small{display:block;color:var(--muted);font-size:11px}.pill{font-size:10px;padding:4px 8px;border-radius:20px;background:#edf4ff;color:#315d9b;white-space:nowrap}.progress{height:7px;border-radius:20px;background:#edf1f6;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:20px}
+.quick-grid{grid-template-columns:repeat(4,1fr)}.quick{border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px;text-align:left}.quick span{font-size:21px}.quick b{display:block;font-size:12px;margin:6px 0 2px}.quick small{font-size:10px;color:var(--muted)}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin:15px 0}.toolbar input,.toolbar select,.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:10px;padding:10px 11px;background:#fff;outline:none;color:var(--ink)}.toolbar input{flex:1;min-width:220px}.toolbar select{min-width:150px}.field{display:grid;gap:5px;margin:10px 0}.field label{font-size:11px;font-weight:700;color:#526277}.field input,.field select,.field textarea{width:100%}.field textarea{min-height:90px;resize:vertical}
+.table{width:100%;border-collapse:collapse;font-size:12px}.table th{text-align:left;color:#718096;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.6px;padding:10px;border-bottom:1px solid var(--line)}.table td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}.table tr:last-child td{border:0}
+.notice{padding:12px 14px;border-radius:12px;background:#eef5ff;color:#35577e;font-size:11px;border:1px solid #dce9fc}.notice.warn{background:#fff7e9;color:#80591f;border-color:#f6e6c7}.notice.success{background:#eaf8f2;color:#17674f;border-color:#d3eee2}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:9px;margin-bottom:15px}.tabs button{border:0;background:transparent;color:var(--muted);padding:8px 11px;border-radius:9px;font-size:12px}.tabs button.active{background:#eaf1ff;color:#2455a8;font-weight:700}
+.module-head{display:flex;gap:15px;align-items:center;padding:19px;background:#fff;border:1px solid var(--line);border-radius:17px;margin-bottom:16px}.module-icon{width:54px;height:54px;border-radius:15px;background:#edf4ff;display:grid;place-items:center;font-size:28px}.module-head h2{margin:0;font-size:20px}.module-head p{margin:3px 0 0;color:var(--muted);font-size:12px}
+.modal-backdrop{display:none;position:fixed;inset:0;background:#0b1b2dcc;z-index:20;align-items:center;justify-content:center;padding:18px}.modal-backdrop.open{display:flex}.modal{background:white;border-radius:18px;max-width:540px;width:100%;padding:22px;box-shadow:0 25px 70px #0004;max-height:90vh;overflow:auto}.modal-head{display:flex;justify-content:space-between;align-items:center}.modal-head h2{margin:0;font-size:19px}.x{border:0;background:#f0f3f7;border-radius:9px;width:30px;height:30px}.modal-foot{display:flex;justify-content:flex-end;gap:8px;margin-top:15px}
+.footer-note{font-size:10px;color:#8a97a7;text-align:center;padding:25px 5px}
+@media(max-width:1100px){.product-grid{grid-template-columns:repeat(3,1fr)}.stats{grid-template-columns:repeat(2,1fr)}.quick-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{height:auto;position:relative;padding:12px}.brand{padding:2px 5px 12px}.nav{display:flex;overflow:auto;gap:4px}.nav-label,.sidebar-foot{display:none}.nav button{white-space:nowrap;width:auto;padding:9px}.nav button .ico{display:none}.topbar{padding:0 14px;height:60px}.content{padding:18px 14px 35px}.heading{display:block}.heading .actions{margin-top:12px}.two,.three{grid-template-columns:1fr}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{gap:9px}.stat{padding:13px}.stat strong{font-size:21px}.hero{padding:22px}.hero h1{font-size:24px}.search input{width:42vw}.table-wrap{overflow:auto}}
+@media(max-width:420px){.product-grid{grid-template-columns:1fr 1fr}.product{padding:12px}.quick-grid{grid-template-columns:1fr 1fr}.top-right .crumb{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">ज</div><div><strong>JanSahayak</strong><small>Universal Citizen Platform</small></div></div>
+  <div class="nav-label">Workspace</div>
+  <nav class="nav" id="mainNav">
+    <button class="active" data-page="overview"><span class="ico">⌂</span>Command Centre</button>
+    <button data-page="products"><span class="ico">▦</span>All Products</button>
+    <button data-page="services"><span class="ico">⌕</span>Service Explorer</button>
+    <button data-page="journeys"><span class="ico">⇢</span>Life Journeys</button>
+    <button data-page="yatra"><span class="ico">↗</span>Yatra & Mobility</button>
+    <button data-page="legal"><span class="ico">⚖</span>Legal Intelligence</button>
+    <button data-page="providers"><span class="ico">♧</span>Provider Network</button>
+  </nav>
+  <div class="nav-label">Platform</div>
+  <nav class="nav">
+    <button data-page="intelligence"><span class="ico">✧</span>Intelligence Fabric</button>
+    <button data-page="integrations"><span class="ico">⇄</span>Integrations</button>
+    <button data-page="operations"><span class="ico">▤</span>Operations & Impact</button>
+    <button data-page="architecture"><span class="ico">⌘</span>Architecture</button>
+  </nav>
+  <div class="sidebar-foot">Prototype environment<br><b style="color:#fff">No live government connections</b><br>Sample records only · Not an official Government of India service.</div>
+</aside>
+<main class="main">
+<header class="topbar"><div class="crumb">JanSahayak / <b id="crumbName">Command Centre</b></div><div class="top-right"><div class="search"><span>⌕</span><input id="globalSearch" placeholder="Search services, schemes, journeys…" /></div><div class="avatar">JS</div></div></header>
+<div class="content">
+<section class="page active" id="page-overview">
+  <div class="hero"><div class="eyebrow">जनसहायक · Universal Citizen Intelligence</div><h1>One citizen. One connected journey.</h1><p>A unified gateway to rights, public services, opportunities, mobility, care and support—across every stage of life. Discover what you need and let JanSahayak coordinate the next steps.</p><div class="hero-actions"><button class="btn primary" onclick="navigate('services')">Explore citizen services →</button><button class="btn ghost" onclick="openModal('journeyModal')">＋ Start a life journey</button><button class="btn ghost" onclick="navigate('products')">View 24 product domains</button></div></div>
+  <div class="grid stats">
+    <div class="stat"><div class="label">First-class product domains</div><strong>24</strong><small>One integrated platform</small></div>
+    <div class="stat"><div class="label">Shared intelligence capabilities</div><strong>16</strong><small>Reusable platform engines</small></div>
+    <div class="stat"><div class="label">Illustrative service catalogue</div><strong id="serviceCount">24</strong><small>Sample discovery entries</small></div>
+    <div class="stat"><div class="label">Connected ecosystem categories</div><strong>8</strong><small>Public, private & community</small></div>
+  </div>
+  <div class="section-title"><h2>Start with what you need</h2><span>Common citizen actions</span></div>
+  <div class="grid quick-grid">
+    <button class="quick" onclick="navigate('services')"><span>🏛️</span><b>Government services</b><small>Certificates, schemes, documents</small></button>
+    <button class="quick" onclick="navigate('yatra')"><span>🚌</span><b>Plan a journey</b><small>Transport, travel, accessibility</small></button>
+    <button class="quick" onclick="navigate('legal')"><span>⚖️</span><b>Understand my rights</b><small>Legal information and referrals</small></button>
+    <button class="quick" onclick="navigate('providers')"><span>🏥</span><b>Find local support</b><small>Care, providers and assistance</small></button>
+  </div>
+  <div class="grid two" style="margin-top:17px">
+    <div class="card"><h3>Explore the 24 product domains</h3><p class="sub">Citizen-facing capabilities organized around real-life needs.</p><div class="grid product-grid" id="featuredProducts"></div><button class="btn" style="margin-top:12px" onclick="navigate('products')">See all products →</button></div>
+    <div class="card"><h3>Illustrative citizen activity</h3><p class="sub">A sample dashboard using fictional data.</p><div class="list">
+      <div class="list-row"><div><b>Senior mobility assistance</b><small>Connect · Yatra · Samarth</small></div><span class="pill">Planning</span></div>
+      <div class="list-row"><div><b>Income certificate guidance</b><small>Citizen · Life</small></div><span class="pill">Checklist ready</span></div>
+      <div class="list-row"><div><b>Consumer complaint pathway</b><small>Adhikar · Legal Intelligence</small></div><span class="pill">Draft prepared</span></div>
+      <div class="list-row"><div><b>Scholarship discovery</b><small>Shiksha · Arthik</small></div><span class="pill">Explore</span></div>
+    </div><div class="notice" style="margin-top:14px">Illustrative only. No real citizen records, applications or transactions are connected.</div></div>
+  </div>
+  <div class="section-title"><h2>Universal Intelligence Fabric</h2><span>Shared by every product</span></div>
+  <div class="grid three" id="overviewEngines"></div>
+</section>
+
+<section class="page" id="page-products">
+  <div class="heading"><div><div class="eyebrow">Citizen-facing portfolio</div><h1>All JanSahayak products</h1><p>24 first-class product domains with dedicated service journeys, connected through one shared platform.</p></div><div class="actions"><button class="btn" onclick="navigate('architecture')">View platform architecture</button></div></div>
+  <div class="toolbar"><input id="productSearch" placeholder="Search product or capability…" oninput="renderProducts()"><select id="productCategory" onchange="renderProducts()"><option value="all">All domains</option><option>Safety & Justice</option><option>Human Development</option><option>Economic Opportunity</option><option>Community & Environment</option><option>Foundations</option></select></div>
+  <div class="grid product-grid" id="allProducts"></div>
+  <div class="notice" style="margin-top:16px">Portfolio design: these are product domains, not 24 separate mobile apps. Each can be independently governed and evolved while reusing common identity, consent, knowledge, workflow and integration services.</div>
+</section>
+
+<section class="page" id="page-services">
+  <div class="heading"><div><div class="eyebrow">Discover & access</div><h1>Citizen Service Explorer</h1><p>Search for a service by need, life event or institution. Results below are illustrative catalogue entries, not verified live availability or eligibility decisions.</p></div><div class="actions"><button class="btn primary" onclick="openModal('serviceRequestModal')">＋ Create service request</button></div></div>
+  <div class="toolbar"><input id="serviceSearch" placeholder="What do you need help with?" oninput="renderServices()"><select id="serviceDomain" onchange="renderServices()"><option value="all">All product domains</option></select><select id="serviceMode" onchange="renderServices()"><option value="all">All delivery modes</option><option>Online</option><option>Assisted</option><option>In-person</option><option>Doorstep</option></select></div>
+  <div class="grid three" id="serviceResults"></div>
+  <div class="notice warn" style="margin-top:16px">Before a real application: confirm current eligibility, fees, documents, jurisdiction, deadlines and official portal with the responsible authority. JanSahayak does not approve or issue government benefits or certificates.</div>
+</section>
+
+<section class="page" id="page-journeys">
+  <div class="heading"><div><div class="eyebrow">Birth to death and beyond</div><h1>Life Journey Orchestrator</h1><p>Coordinate multiple services around a citizen's life event instead of navigating disconnected departments.</p></div><div class="actions"><button class="btn primary" onclick="openModal('journeyModal')">＋ Create journey</button></div></div>
+  <div class="grid two">
+    <div class="card"><h3>Life-event map</h3><p class="sub">Select a life stage to see common service needs.</p><div class="tabs" id="lifeTabs"><button class="active" data-life="birth">Birth & early childhood</button><button data-life="education">Education</button><button data-life="work">Work & livelihood</button><button data-life="family">Family & housing</button><button data-life="ageing">Ageing</button><button data-life="bereavement">Bereavement</button></div><div id="lifeDetail"></div></div>
+    <div class="card"><h3>My journey workspace</h3><p class="sub">Local prototype journey tracker.</p><div id="journeyList" class="list"><div class="notice">No journeys created yet. Start a journey to generate a local demo checklist.</div></div></div>
+  </div>
+  <div class="section-title"><h2>How orchestration works</h2><span>Citizen-controlled, institution-led fulfilment</span></div>
+  <div class="grid three"><div class="card"><h3>1. Understand</h3><p class="sub">Identify the life event, needs, jurisdiction and urgency.</p></div><div class="card"><h3>2. Coordinate</h3><p class="sub">Build a verified checklist and connect the relevant departments and providers.</p></div><div class="card"><h3>3. Complete</h3><p class="sub">Track handoffs, reminders, outstanding actions and citizen-confirmed outcomes.</p></div></div>
+</section>
+
+<section class="page" id="page-yatra">
+  <div class="heading"><div><div class="eyebrow">JanSahayak Yatra · Mobility & travel</div><h1>Plan a connected journey</h1><p>Discover multimodal mobility, accessible travel, tourism and travel assistance. This prototype does not provide live routes, fares, schedules or ticket inventory.</p></div><div class="actions"><button class="btn" onclick="navigate('providers')">Mobility providers</button></div></div>
+  <div class="card"><div class="grid two"><div><h3>Journey planner</h3><p class="sub">Illustrative planning request</p><div class="field"><label>From</label><input id="fromPlace" placeholder="Starting location"></div><div class="field"><label>To</label><input id="toPlace" placeholder="Destination"></div><div class="grid two"><div class="field"><label>Travel date</label><input id="travelDate" type="date"></div><div class="field"><label>Travel preference</label><select id="travelMode"><option>Best overall</option><option>Lowest cost</option><option>Fastest</option><option>Accessible journey</option><option>Public transport</option></select></div></div><div class="field"><label>Additional needs</label><select id="travelNeed"><option>No additional assistance</option><option>Wheelchair accessible</option><option>Senior assistance</option><option>Child / family travel</option><option>Caregiver accompanying</option></select></div><button class="btn primary" onclick="planTrip()">Build sample journey plan</button></div><div><h3>Mobility ecosystem</h3><p class="sub">Potential authorized integrations</p><div class="list"><div class="list-row"><b>Rail & suburban rail</b><span class="pill">Official handoff</span></div><div class="list-row"><b>State bus & city bus</b><span class="pill">Operator integration</span></div><div class="list-row"><b>Metro & urban mobility</b><span class="pill">Agency integration</span></div><div class="list-row"><b>Aviation & airports</b><span class="pill">Partner integration</span></div><div class="list-row"><b>Taxi, auto & last mile</b><span class="pill">Verified providers</span></div><div class="list-row"><b>Tourism & pilgrimage</b><span class="pill">Destination partners</span></div></div></div></div></div>
+  <div id="tripResult" style="margin-top:15px"></div>
+  <div class="section-title"><h2>Yatra capabilities</h2><span>First and last mile included</span></div><div class="grid three"><div class="card"><h3>🚌 Multimodal mobility</h3><p class="sub">Rail, bus, metro, air, road and rural connectivity.</p></div><div class="card"><h3>♿ Assisted travel</h3><p class="sub">Accessibility, senior support, caregiver coordination.</p></div><div class="card"><h3>🧭 Travel & tourism</h3><p class="sub">Destinations, itineraries, pilgrimage and accommodation.</p></div><div class="card"><h3>🛡️ Safety & disruption</h3><p class="sub">Emergency referrals, delay and cancellation support.</p></div><div class="card"><h3>🎫 Entitlements</h3><p class="sub">Discover applicable concessions and official conditions.</p></div><div class="card"><h3>🌏 Migration & relocation</h3><p class="sub">Inter-State mobility and service portability.</p></div></div>
+</section>
+
+<section class="page" id="page-legal">
+  <div class="heading"><div><div class="eyebrow">Shared capability · J-LRIF</div><h1>Legal & Regulatory Intelligence</h1><p>Source-backed legal information, rights navigation, procedure guidance and referral—embedded across all JanSahayak products.</p></div><div class="actions"><button class="btn" onclick="window.open('https://www.indiacode.nic.in/','_blank')">India Code ↗</button><button class="btn" onclick="window.open('https://nalsa.gov.in/','_blank')">NALSA ↗</button></div></div>
+  <div class="notice warn">Legal information is not legal advice. Verify current commencement, amendments, State rules, jurisdiction and facts. No automated legal determination, investigation, adjudication or filing is performed.</div>
+  <div class="section-title"><h2>Core criminal law framework</h2><span>India's three new criminal laws</span></div>
+  <div class="grid three"><div class="card"><span class="tag">Act 45 of 2023</span><h3 style="margin-top:9px">BNS</h3><p class="sub">Bharatiya Nyaya Sanhita — substantive criminal offences, liability and punishments.</p></div><div class="card"><span class="tag">Act 46 of 2023</span><h3 style="margin-top:9px">BNSS</h3><p class="sub">Bharatiya Nagarik Suraksha Sanhita — criminal procedure, investigation, arrest, bail and trial.</p></div><div class="card"><span class="tag">Act 47 of 2023</span><h3 style="margin-top:9px">BSA</h3><p class="sub">Bharatiya Sakshya Adhiniyam — relevance, admissibility and proof of evidence.</p></div></div>
+  <div class="section-title"><h2>Legal guidance navigator</h2><span>Illustrative routing only</span></div>
+  <div class="grid two"><div class="card"><div class="field"><label>Topic</label><select id="legalTopic"><option>Consumer dispute</option><option>Cyber financial fraud</option><option>Domestic violence / personal safety</option><option>Child protection</option><option>Employment and wages</option><option>Property and succession</option><option>Senior citizen rights</option><option>Disability rights</option><option>Police / criminal procedure</option></select></div><div class="field"><label>Jurisdiction</label><select id="legalJurisdiction"><option>India — Central framework</option><option>State / Union Territory rules need verification</option><option>District / local authority</option></select></div><div class="field"><label>Describe the general issue (do not enter confidential details)</label><textarea id="legalQuestion" placeholder="Describe the issue without names, account numbers, addresses or sensitive case information."></textarea></div><label style="font-size:11px"><input type="checkbox" id="legalAck"> I understand this is general information, not legal advice.</label><div style="margin-top:12px"><button class="btn primary" onclick="legalRoute()">Generate guidance pathway</button></div></div><div class="card" id="legalOutput"><h3>How legal intelligence works</h3><p class="sub">Verified legal sources → jurisdiction and effective-date checks → plain-language explanation → official referral.</p><div class="list"><div class="list-row"><b>Primary sources</b><span class="pill">Acts & Gazette</span></div><div class="list-row"><b>State applicability</b><span class="pill">Rules & amendments</span></div><div class="list-row"><b>Judicial context</b><span class="pill">Judgments</span></div><div class="list-row"><b>Human support</b><span class="pill">Legal aid referral</span></div></div></div></div>
+  <div class="section-title"><h2>Official legal resources</h2></div><div class="grid three"><a class="card" href="https://www.indiacode.nic.in/" target="_blank"><h3>India Code ↗</h3><p class="sub">Central and State legislation repository.</p></a><a class="card" href="https://ecourts.gov.in/" target="_blank"><h3>eCourts ↗</h3><p class="sub">Court services and case information.</p></a><a class="card" href="https://cybercrime.gov.in/" target="_blank"><h3>Cyber Crime Portal ↗</h3><p class="sub">Official cybercrime reporting channel.</p></a></div>
+</section>
+
+<section class="page" id="page-providers">
+  <div class="heading"><div><div class="eyebrow">Federated service ecosystem</div><h1>Provider & Partner Network</h1><p>Discover and coordinate verified public, private, nonprofit and community providers. Sample providers below are fictional.</p></div><div class="actions"><button class="btn primary" onclick="openModal('providerModal')">＋ Register sample provider</button></div></div>
+  <div class="toolbar"><input id="providerSearch" placeholder="Search provider, service or location…" oninput="renderProviders()"><select id="providerType" onchange="renderProviders()"><option value="all">All provider types</option><option>Government</option><option>Healthcare</option><option>Community / NGO</option><option>Mobility</option><option>Education</option></select></div>
+  <div class="card table-wrap"><table class="table"><thead><tr><th>Provider</th><th>Type</th><th>Services</th><th>Verification</th><th>Coverage</th></tr></thead><tbody id="providerRows"></tbody></table></div>
+  <div class="notice warn" style="margin-top:14px">Provider onboarding in production requires authoritative credential and licence verification, coverage and pricing checks, contract/SLA controls, auditability and ongoing re-verification. A document upload alone is not proof of authorization.</div>
+</section>
+
+<section class="page" id="page-intelligence">
+  <div class="heading"><div><div class="eyebrow">Shared platform layer</div><h1>Universal Intelligence Fabric</h1><p>Reusable intelligence and trust services powering every citizen-facing product.</p></div></div>
+  <div class="grid three" id="engineGrid"></div>
+  <div class="section-title"><h2>Agentic intelligence mesh</h2><span>Supervised orchestration</span></div>
+  <div class="grid three" id="agentGrid"></div>
+  <div class="notice warn" style="margin-top:15px">Agents may discover, explain, prepare and coordinate. Sensitive actions require identity, purpose limitation, explicit authorization and human approval where appropriate. Agents cannot approve benefits, diagnose, prescribe, investigate, prosecute or adjudicate.</div>
+</section>
+
+<section class="page" id="page-integrations">
+  <div class="heading"><div><div class="eyebrow">Government & ecosystem connectivity</div><h1>Integration Fabric</h1><p>Federated adapters connect JanSahayak to authorized government systems, public institutions and external providers.</p></div></div>
+  <div class="grid three" id="integrationGrid"></div>
+  <div class="notice" style="margin-top:15px">Integration status is conceptual, not live. API availability, eligibility to integrate, terms, security review and data-sharing authority must be confirmed with each system owner. Where an API is unavailable, use a transparent official portal or assisted handoff.</div>
+</section>
+
+<section class="page" id="page-operations">
+  <div class="heading"><div><div class="eyebrow">Service delivery & accountability</div><h1>Operations & Impact</h1><p>Illustrative district operating model for coordinating service delivery, provider quality and citizen outcomes.</p></div><div class="actions"><button class="btn" onclick="showToast('Demo report prepared locally')">Export demo summary</button></div></div>
+  <div class="grid stats"><div class="stat"><div class="label">Sample service pathways</div><strong>24</strong><small>Illustrative catalogue</small></div><div class="stat"><div class="label">Provider records</div><strong id="providerCount">6</strong><small>Fictional sample entries</small></div><div class="stat"><div class="label">Journey templates</div><strong>6</strong><small>Life-event examples</small></div><div class="stat"><div class="label">Critical controls</div><strong>100%</strong><small>Designed-in, not audited</small></div></div>
+  <div class="grid two"><div class="card"><h3>District service operating model</h3><p class="sub">Illustrative roles and accountability</p><div class="list"><div class="list-row"><div><b>District steering committee</b><small>Priorities, interdepartmental escalation</small></div><span class="pill">Governance</span></div><div class="list-row"><div><b>Department nodal officers</b><small>Official service rules and fulfilment</small></div><span class="pill">Authority</span></div><div class="list-row"><div><b>Platform operations centre</b><small>Workflow, integration and SLA monitoring</small></div><span class="pill">Operations</span></div><div class="list-row"><div><b>Provider network manager</b><small>Verification, coverage and incidents</small></div><span class="pill">Network</span></div><div class="list-row"><div><b>Privacy, security & legal office</b><small>Consent, controls, audits and assurance</small></div><span class="pill">Trust</span></div></div></div>
+  <div class="card"><h3>Outcome scorecard design</h3><p class="sub">Targets must be baselined and approved during a real pilot.</p><div id="scoreBars"></div></div></div>
+  <div class="section-title"><h2>Non-negotiable service controls</h2></div><div class="grid three"><div class="card"><h3>Citizen agency</h3><p class="sub">Clear consent, choice, correction, withdrawal and grievance mechanisms.</p></div><div class="card"><h3>Institutional accountability</h3><p class="sub">Every official decision remains with the legally responsible authority.</p></div><div class="card"><h3>Measurable outcomes</h3><p class="sub">Track completed services, fairness, accessibility, failures and appeals.</p></div></div>
+</section>
+
+<section class="page" id="page-architecture">
+  <div class="heading"><div><div class="eyebrow">Reference architecture</div><h1>JanSahayak Platform Architecture</h1><p>One citizen experience, modular domain products, shared intelligence, federated integrations and accountable service fulfilment.</p></div></div>
+  <div class="card" style="padding:22px">
+    <div class="arch-layer"><b>Experience channels</b><div>Web · Mobile · Voice / IVR · Assisted CSC · WhatsApp / messaging · Operations console · Provider portal</div></div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-layer blue"><b>24 product domains</b><div>Citizen · Life · Connect · Legacy · Yatra · Suraksha · Nyaya · Adhikar · Arogya · Shiksha · Kaushal · Samarth · Saksham · Udyam · Kisan · Arthik · Pravasi · Samuday · JanBhagidari · Paryavaran · Jal · Sanskriti · Aahar · Pashu</div></div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-layer teal"><b>Universal Intelligence Fabric</b><div>Identity & Consent · Citizen Life Graph · Service Knowledge Graph · Legal Intelligence · Entitlement Engine · Life Event Engine · Geospatial & Mobility · Agent Mesh · Workflow / Case · Provider Registry · Trust & Safety · Outcome Intelligence</div></div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-layer gold"><b>Integration & orchestration</b><div>API Gateway · Government Integration Fabric · Event Bus · Workflow Engine · Partner Adapters · Notifications · Payment Coordination · Audit Ledger</div></div>
+    <div class="arch-arrow">↓</div>
+    <div class="arch-layer"><b>Federated ecosystem</b><div>Central / State / District Government · Local Bodies · Courts · Healthcare · Education · Transport · Financial Institutions · Private Providers · NGOs · Communities</div></div>
+  </div>
+  <div class="section-title"><h2>Core architecture principles</h2></div><div class="grid three"><div class="card"><h3>Federated, not centralized authority</h3><p class="sub">Systems of record remain with their accountable institutions.</p></div><div class="card"><h3>API-first, handoff-ready</h3><p class="sub">Use standards-based adapters where authorized; transparent fallback where not.</p></div><div class="card"><h3>Privacy by design</h3><p class="sub">Purpose limitation, data minimization, consent, segregation and audit.</p></div><div class="card"><h3>Human-supervised agents</h3><p class="sub">Bounded permissions, evaluation, traceability and escalation.</p></div><div class="card"><h3>Accessible by default</h3><p class="sub">Multilingual, voice-first, low-bandwidth and disability-inclusive.</p></div><div class="card"><h3>Open and portable</h3><p class="sub">Versioned contracts, data portability and reduced vendor lock-in.</p></div></div>
+</section>
+<div class="footer-note">JanSahayak concept demonstrator · Fictional sample data · No live government, legal, healthcare, transport, payment or provider transactions · Not an official Government of India service.</div>
+</div>
+</main>
+</div>
+
+<div class="modal-backdrop" id="journeyModal"><div class="modal"><div class="modal-head"><h2>Create a life journey</h2><button class="x" onclick="closeModal('journeyModal')">×</button></div><div class="field"><label>Journey name</label><input id="journeyName" placeholder="e.g. New child and family services"></div><div class="field"><label>Life event</label><select id="journeyType"><option>Birth & early childhood</option><option>Education & scholarship</option><option>Employment & relocation</option><option>Marriage & family</option><option>Healthcare & recovery</option><option>Ageing & assisted living</option><option>Death & survivor support</option></select></div><div class="field"><label>State / district (optional)</label><input id="journeyRegion" placeholder="Enter broad jurisdiction only"></div><div class="notice">A local demo checklist will be created. No application is submitted to a department.</div><div class="modal-foot"><button class="btn" onclick="closeModal('journeyModal')">Cancel</button><button class="btn primary" onclick="createJourney()">Create journey</button></div></div></div>
+<div class="modal-backdrop" id="serviceRequestModal"><div class="modal"><div class="modal-head"><h2>Create a service request</h2><button class="x" onclick="closeModal('serviceRequestModal')">×</button></div><div class="field"><label>What do you need?</label><input id="reqTitle" placeholder="Describe the service you need"></div><div class="field"><label>Product domain</label><select id="reqDomain"></select></div><div class="field"><label>Preferred assistance</label><select id="reqMode"><option>Online guidance</option><option>Assisted service</option><option>In-person referral</option><option>Doorstep support</option></select></div><div class="modal-foot"><button class="btn" onclick="closeModal('serviceRequestModal')">Cancel</button><button class="btn primary" onclick="createRequest()">Save demo request</button></div></div></div>
+<div class="modal-backdrop" id="providerModal"><div class="modal"><div class="modal-head"><h2>Add a sample provider</h2><button class="x" onclick="closeModal('providerModal')">×</button></div><div class="field"><label>Provider name</label><input id="newProvider" placeholder="Fictional provider name"></div><div class="field"><label>Provider type</label><select id="newProviderType"><option>Government</option><option>Healthcare</option><option>Community / NGO</option><option>Mobility</option><option>Education</option></select></div><div class="field"><label>Services</label><input id="newProviderServices" placeholder="e.g. transport assistance"></div><div class="modal-foot"><button class="btn" onclick="closeModal('providerModal')">Cancel</button><button class="btn primary" onclick="addProvider()">Add sample</button></div></div></div>
+<div id="toast" style="position:fixed;bottom:22px;right:22px;background:#10243a;color:#fff;padding:12px 16px;border-radius:11px;box-shadow:var(--shadow);display:none;z-index:30;font-size:12px"></div>
+<style>
+.arch-layer{border:1px solid #dfe7f0;border-radius:14px;padding:16px;text-align:center;background:#f9fbfd}.arch-layer b{display:block;font-size:14px;margin-bottom:5px}.arch-layer div{font-size:12px;color:#607187}.arch-layer.blue{background:#eef4ff;border-color:#d7e4fc}.arch-layer.teal{background:#eaf8f5;border-color:#ccece4}.arch-layer.gold{background:#fff7e9;border-color:#f4e4c4}.arch-arrow{text-align:center;font-size:23px;color:#8ca0b5;padding:5px}
+a.card{display:block;text-decoration:none;color:inherit}a.card:hover{border-color:#9db9ee}
+</style>
+<script>
+const products=[
+["Citizen","🏛️","Universal access to public and essential services.","Foundations"],
+["Life","🌱","Life-event orchestration from birth through ageing and beyond.","Foundations"],
+["Connect","🔗","Connect institutions, providers, communities and doorstep fulfilment.","Foundations"],
+["Legacy","🕊️","Bereavement, death registration, survivor support and continuity.","Foundations"],
+["Yatra","🚌","Transportation, multimodal mobility, tourism and travel assistance.","Foundations"],
+["Suraksha","🛡️","Personal safety, child protection, emergency and victim support.","Safety & Justice"],
+["Nyaya","⚖️","Legal rights, legal aid, justice navigation and procedural guidance.","Safety & Justice"],
+["Adhikar","📜","Consumer protection, public grievances, RTI and citizen rights.","Safety & Justice"],
+["Arogya","🏥","Healthcare discovery, care coordination, prevention and wellbeing.","Human Development"],
+["Shiksha","🎓","Schooling, higher education, scholarships and lifelong learning.","Human Development"],
+["Kaushal","🧰","Skills, training, apprenticeships, careers and employment.","Human Development"],
+["Samarth","🤝","Family support, childcare, senior care and assisted living.","Human Development"],
+["Saksham","♿","Disability inclusion, accessibility and assistive support.","Human Development"],
+["Udyam","🚀","Entrepreneurship, MSME services, licences and business support.","Economic Opportunity"],
+["Kisan","🌾","Agriculture, farmer services, insurance and rural livelihoods.","Economic Opportunity"],
+["Arthik","💳","Financial wellbeing, pensions, insurance and social security.","Economic Opportunity"],
+["Pravasi","🧳","Migration, relocation, worker support and benefit portability.","Economic Opportunity"],
+["Samuday","🏘️","Community development, neighbourhood services and local projects.","Community & Environment"],
+["JanBhagidari","🗳️","Civic participation, consultations and public accountability.","Community & Environment"],
+["Paryavaran","🌳","Environment, pollution reporting, conservation and sustainability.","Community & Environment"],
+["Jal","💧","Water access, quality, sanitation and local infrastructure.","Community & Environment"],
+["Sanskriti","🎭","Culture, heritage, arts, language and traditional crafts.","Community & Environment"],
+["Aahar","🥗","Food security, nutrition programmes and ration assistance.","Community & Environment"],
+["Pashu","🐄","Animal welfare, veterinary access and livestock services.","Community & Environment"]
+];
+const engines=[
+["Identity & Consent","🔐","Identity federation, delegated access, purpose, consent, revocation and authorization."],
+["Citizen Life Graph","🧬","Citizen-controlled relationships between life events, needs, services and outcomes."],
+["India Service Knowledge Graph","🕸️","Discoverable services, departments, jurisdictions, eligibility rules and dependencies."],
+["Legal & Regulatory Intelligence","⚖️","Acts, rules, notifications, judgments, applicability and source-backed guidance."],
+["Entitlement Intelligence","🎯","Potential scheme and benefit discovery with verified rules and human confirmation."],
+["Life Event Intelligence","🌱","Orchestrate multi-department checklists around important life events."],
+["Geospatial & Mobility Intelligence","🗺️","Service geography, accessibility, transport networks and location-aware coordination."],
+["Government Integration Fabric","🔌","Versioned adapters, API gateway, official handoffs and integration observability."],
+["Provider & Partner Registry","🏥","Organization, facility, professional, service, coverage, credentials and SLA."],
+["Agentic Intelligence Mesh","🤖","Specialized agents with bounded tools, policy checks, evaluation and human oversight."],
+["Workflow & Case Engine","⚙️","Case lifecycle, approvals, escalations, events, deadlines and idempotent actions."],
+["Trust, Safety & Governance","🛡️","Privacy, security, audit, risk controls, safety policy and responsible AI."],
+["Payment Coordination","₹","Authorized payment handoffs, receipts, refunds and reconciliation status."],
+["Notification & Communication","🔔","Multilingual voice, SMS, email, messaging and accessible notifications."],
+["Outcome Intelligence","📊","Service completion, equity, experience, quality, cost and public impact."],
+["Multilingual Voice Intelligence","🎙️","Indian languages, speech, translation, accessibility and low-bandwidth interfaces."]
+];
+const agents=["Citizen Concierge / Supervisor","Government Services Agent","Eligibility Discovery Agent","Life Event Orchestrator","Legal Information Agent","Healthcare Navigator","Senior & Caregiver Agent","Yatra Mobility Agent","Provider Discovery Agent","Doorstep Dispatch Agent","Grievance & Consumer Agent","District Operations Agent"];
+const services=[
+["Birth registration guidance","Life","Online","Registration of Births and Deaths Act; State process"],
+["Income certificate guidance","Citizen","Assisted","State / district revenue authority"],
+["Caste certificate guidance","Citizen","Assisted","State / district authority"],
+["DigiLocker document access","Citizen","Online","Authorized DigiLocker workflow"],
+["Scholarship discovery","Shiksha","Online","Scheme owner and current eligibility"],
+["School admission guidance","Shiksha","Assisted","State education authority"],
+["Skill training discovery","Kaushal","Online","Training provider and scheme owner"],
+["Job and apprenticeship discovery","Kaushal","Online","Employer / official employment portal"],
+["MSME registration guidance","Udyam","Online","Official Udyam registration"],
+["Farmer scheme discovery","Kisan","Online","Central / State scheme authority"],
+["Crop insurance guidance","Kisan","Assisted","Insurer and scheme authority"],
+["Pension discovery","Arthik","Assisted","Relevant pension authority"],
+["Ration portability guidance","Aahar","In-person","Public distribution system authority"],
+["Healthcare facility discovery","Arogya","Online","Verified public/private facility"],
+["Accessible mobility assistance","Yatra","Assisted","Transport operator / verified provider"],
+["Rail journey information","Yatra","Online","Official railway channel"],
+["Intercity bus discovery","Yatra","Online","State / authorized bus operator"],
+["Consumer complaint preparation","Adhikar","Online","National Consumer Helpline / competent forum"],
+["Legal aid referral","Nyaya","Assisted","Legal Services Authority"],
+["Cybercrime reporting guidance","Suraksha","Online","National Cyber Crime Reporting Portal"],
+["Disability support navigation","Saksham","Assisted","Competent certification / welfare authority"],
+["Senior care provider discovery","Samarth","Doorstep","Verified provider / welfare network"],
+["Water service complaint guidance","Jal","In-person","Local water / municipal authority"],
+["Animal health service discovery","Pashu","Doorstep","Veterinary / animal husbandry provider"]
+];
+let providers=[
+["District Citizen Facilitation Centre (Sample)","Government","Certificates, assisted applications","Illustrative only","District-wide"],
+["Community Health Network (Sample)","Healthcare","Primary care, appointments","Illustrative only","Urban & rural"],
+["Accessible Mobility Partner (Sample)","Mobility","Assisted transport, wheelchair vehicle","Illustrative only","Selected zones"],
+["Learning & Skills Hub (Sample)","Education","Training, career guidance","Illustrative only","District-wide"],
+["Senior Support Foundation (Sample)","Community / NGO","Caregiver support, welfare visits","Illustrative only","Selected blocks"],
+["Rural Livelihood Collective (Sample)","Community / NGO","Farmer and livelihood support","Illustrative only","Rural clusters"]
+];
+let journeys=[],requests=[];
+function navigate(page){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+page).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));let label=({overview:"Command Centre",products:"All Products",services:"Service Explorer",journeys:"Life Journeys",yatra:"Yatra & Mobility",legal:"Legal Intelligence",providers:"Provider Network",intelligence:"Intelligence Fabric",integrations:"Integrations",operations:"Operations & Impact",architecture:"Architecture"})[page];document.getElementById('crumbName').textContent=label;window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.page)));
+function productCard(p){return `<button class="product" onclick="openProduct('${p[0]}')"><span class="picon">${p[1]}</span><b>${p[0]}</b><small>${p[2]}</small><span class="tag">${p[3]}</span></button>`}
+function renderProducts(){let q=(document.getElementById('productSearch').value||'').toLowerCase(),c=document.getElementById('productCategory').value;let filtered=products.filter(p=>(c==='all'||p[3]===c)&&(p[0]+' '+p[2]).toLowerCase().includes(q));document.getElementById('allProducts').innerHTML=filtered.map(productCard).join('')}
+function openProduct(name){if(name==='Yatra'){navigate('yatra');return}if(name==='Nyaya'||name==='Adhikar'||name==='Suraksha'){navigate('legal');return}navigate('services');document.getElementById('serviceDomain').value=name;renderServices();showToast(name+' service domain selected')}
+function renderServices(){let q=(document.getElementById('serviceSearch').value||'').toLowerCase(),d=document.getElementById('serviceDomain').value,m=document.getElementById('serviceMode').value;let filtered=services.filter(s=>(d==='all'||s[1]===d)&&(m==='all'||s[2]===m)&&(s.join(' ').toLowerCase().includes(q)));document.getElementById('serviceResults').innerHTML=filtered.map(s=>`<div class="card"><span class="tag">${s[1]}</span><h3 style="margin-top:10px">${s[0]}</h3><p class="sub">${s[3]}</p><div style="display:flex;justify-content:space-between;align-items:center"><span class="pill">${s[2]}</span><button class="btn" onclick="prefillRequest('${s[0].replace(/'/g,"\\'")}','${s[1]}')">Get guidance →</button></div></div>`).join('')||'<div class="notice">No matching sample services. Try a broader search.</div>'}
+function prefillRequest(title,domain){document.getElementById('reqTitle').value=title;document.getElementById('reqDomain').value=domain;openModal('serviceRequestModal')}
+function renderProviders(){let q=(document.getElementById('providerSearch').value||'').toLowerCase(),t=document.getElementById('providerType').value;document.getElementById('providerRows').innerHTML=providers.filter(p=>(t==='all'||p[1]===t)&&p.join(' ').toLowerCase().includes(q)).map(p=>`<tr><td><b>${p[0]}</b></td><td>${p[1]}</td><td>${p[2]}</td><td><span class="tag amber">${p[3]}</span></td><td>${p[4]}</td></tr>`).join('')||'<tr><td colspan="5">No matching sample providers.</td></tr>';document.getElementById('providerCount').textContent=providers.length}
+function renderEngines(){document.getElementById('engineGrid').innerHTML=engines.map(e=>`<div class="card"><div style="font-size:23px;margin-bottom:8px">${e[0]==='Payment Coordination'?'₹':e[0]==='Identity & Consent'?'🔐':'✧'}</div><h3>${e[0]}</h3><p class="sub">${e[2]}</p></div>`).join('');document.getElementById('overviewEngines').innerHTML=engines.slice(0,6).map(e=>`<div class="card"><h3>${e[0]}</h3><p class="sub">${e[2]}</p></div>`).join('');document.getElementById('agentGrid').innerHTML=agents.map(a=>`<div class="card"><h3>🤖 ${a}</h3><p class="sub">Bounded domain tools · policy checks · traceable handoffs · human escalation.</p></div>`).join('')}
+function renderIntegrations(){let data=[["UMANG","Government service discovery and authorized handoffs","Potential integration"],["API Setu","Government API discovery and exchange","Authorization required"],["DigiLocker","Citizen-authorized document access","Consent-based"],["ABDM","Digital health ecosystem and consent-based exchange","Standards / approvals"],["e-District","State and district service workflows","State-specific"],["eCourts","Court services and public case information","Public / authorized"],["IRCTC / Railways","Rail travel information and authorized booking","Operator-controlled"],["State transport & metro","Bus, metro and urban mobility","Agency-specific"],["NCH / e-Jagriti","Consumer grievance pathways","Official handoff"],["112 / emergency services","Emergency response referral","Jurisdiction-specific"],["UPI ecosystem","Authorized payment handoff","Regulated providers"],["NGO & private providers","Care, livelihood and doorstep services","Verification & contract"]];document.getElementById('integrationGrid').innerHTML=data.map(d=>`<div class="card"><span class="tag">${d[2]}</span><h3 style="margin-top:9px">${d[0]}</h3><p class="sub">${d[1]}</p></div>`).join('')}
+const lifeData={birth:["Birth registration and certificate guidance","Newborn health and immunization pathway","Nutrition and maternal support discovery","Family identity/document checklist","Childcare and early learning"],education:["School admission and transfer","Scholarships and education entitlements","Disability accommodations","Transport and hostel discovery","Examination and credential guidance"],work:["Skills assessment and training","Employment and apprenticeship discovery","Worker registration and social security","Relocation and travel coordination","Financial inclusion and pension planning"],family:["Marriage registration guidance","Housing and utility services","Consumer and legal rights navigation","Family health and childcare support","Local community services"],ageing:["Pension and senior entitlements","Accessible transport and mobility","Healthcare and medicine coordination","Caregiver and assisted-living support","Legal protection and social connection"],bereavement:["Death registration and certificates","Family and survivor documentation","Pension, insurance and benefit claims","Succession and property legal referral","Utilities, subscriptions and account closure"]};
+document.getElementById('lifeTabs').addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')return;document.querySelectorAll('#lifeTabs button').forEach(b=>b.classList.toggle('active',b===e.target));renderLife(e.target.dataset.life)});
+function renderLife(k){document.getElementById('lifeDetail').innerHTML='<div class="list">'+lifeData[k].map((x,i)=>`<div class="list-row"><div><b>${i+1}. ${x}</b><small>Confirm applicable authority, jurisdiction and current process.</small></div><span class="pill">Checklist</span></div>`).join('')+'</div>'}
+function renderJourneys(){document.getElementById('journeyList').innerHTML=journeys.length?journeys.map((j,i)=>`<div class="list-row"><div><b>${j.name}</b><small>${j.type} · ${j.region||'Jurisdiction not specified'} · ${j.id}</small></div><span class="tag green">Draft</span></div>`).join(''):'<div class="notice">No journeys created yet. Start a journey to generate a local demo checklist.</div>'}
+function createJourney(){let name=document.getElementById('journeyName').value.trim(),type=document.getElementById('journeyType').value,region=document.getElementById('journeyRegion').value.trim();if(!name){showToast('Enter a journey name');return}journeys.unshift({name,type,region,id:'JS-JRN-'+Math.floor(10000+Math.random()*89999)});renderJourneys();closeModal('journeyModal');showToast('Demo journey created locally')}
+function createRequest(){let title=document.getElementById('reqTitle').value.trim();if(!title){showToast('Describe the service request');return}let id='JS-REQ-'+Math.floor(10000+Math.random()*89999);requests.unshift({title,domain:document.getElementById('reqDomain').value,mode:document.getElementById('reqMode').value,id});closeModal('serviceRequestModal');showToast('Saved local demo request '+id)}
+function addProvider(){let n=document.getElementById('newProvider').value.trim();if(!n){showToast('Enter provider name');return}providers.unshift([n,document.getElementById('newProviderType').value,document.getElementById('newProviderServices').value||'Services to be defined','Unverified demo','To be defined']);renderProviders();closeModal('providerModal');showToast('Sample provider added as unverified')}
+function planTrip(){let f=document.getElementById('fromPlace').value.trim(),t=document.getElementById('toPlace').value.trim();if(!f||!t){showToast('Enter starting point and destination');return}document.getElementById('tripResult').innerHTML=`<div class="card"><span class="tag amber">Illustrative plan · Not live routing</span><h3 style="margin-top:9px">${f} → ${t}</h3><p class="sub">Preference: ${document.getElementById('travelMode').value} · Assistance: ${document.getElementById('travelNeed').value}</p><div class="list"><div class="list-row"><div><b>1. First-mile connection</b><small>Check verified local transport and accessibility.</small></div><span class="pill">To confirm</span></div><div class="list-row"><div><b>2. Main transport leg</b><small>Compare authorized rail, bus, air or road options.</small></div><span class="pill">To confirm</span></div><div class="list-row"><div><b>3. Transfer & assistance</b><small>Allow transfer time and request operator assistance.</small></div><span class="pill">To confirm</span></div><div class="list-row"><div><b>4. Last-mile arrival</b><small>Confirm destination access and pickup details.</small></div><span class="pill">To confirm</span></div></div><div class="notice" style="margin-top:12px">No route, fare, departure time or ticket availability has been retrieved. Verify all details with the relevant operator before travel.</div></div>`}
+function legalRoute(){if(!document.getElementById('legalAck').checked){showToast('Please acknowledge the legal information limitation');return}let topic=document.getElementById('legalTopic').value;document.getElementById('legalOutput').innerHTML=`<span class="tag green">Guidance pathway prepared locally</span><h3 style="margin-top:10px">${topic}</h3><p class="sub">Suggested next steps (general, non-exhaustive):</p><div class="list"><div class="list-row"><b>1. Identify immediate safety or time-critical concerns</b></div><div class="list-row"><b>2. Preserve relevant documents and records lawfully</b></div><div class="list-row"><b>3. Verify applicable Central and State law and procedure</b></div><div class="list-row"><b>4. Contact the competent authority or legal aid service</b></div><div class="list-row"><b>5. Obtain qualified legal advice for case-specific decisions</b></div></div><div class="notice warn" style="margin-top:12px">This is not a legal conclusion. The prototype has not retrieved or validated current law for your facts or jurisdiction.</div>`}
+function openModal(id){document.getElementById(id).classList.add('open')}function closeModal(id){document.getElementById(id).classList.remove('open')}
+function showToast(msg){let t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display='none',2600)}
+document.getElementById('globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){let q=e.target.value; navigate('services');document.getElementById('serviceSearch').value=q;renderServices()}});
+document.getElementById('mainNav').addEventListener('click',e=>{let b=e.target.closest('button');if(b&&b.dataset.page)navigate(b.dataset.page)});
+document.getElementById('serviceDomain').innerHTML='<option value="all">All product domains</option>'+products.map(p=>`<option>${p[0]}</option>`).join('');
+document.getElementById('reqDomain').innerHTML=products.map(p=>`<option>${p[0]}</option>`).join('');
+document.getElementById('featuredProducts').innerHTML=products.slice(0,8).map(productCard).join('');
+document.getElementById('serviceCount').textContent=services.length;
+renderProducts();renderServices();renderProviders();renderEngines();renderIntegrations();renderLife('birth');renderJourneys();
+document.getElementById('scoreBars').innerHTML=[["Service completion","80%"],["Provider verification","90%"],["Citizen satisfaction","85%"],["Accessibility coverage","70%"]].map(x=>`<div style="margin:13px 0"><div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:5px"><b>${x[0]}</b><span>${x[1]} target</span></div><div class="progress"><i style="width:${x[1]}"></i></div></div>`).join('');
+</script>
+</body></html>
